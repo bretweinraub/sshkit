@@ -105,13 +105,20 @@ end
 
 ## Upload a file from disk
 
+In these examples take note of the function signature:
+
+```ruby
+def upload!(local, remote, options = {})
+```
+In that you must formulate the local first, and then the remote.   Note that with download!, the order of these is reversed.
+
 ```ruby
 on hosts do |host|
   upload! '/config/database.yml', '/opt/my_project/shared/database.yml'
 end
 ```
 
-Upload and download will respect the `within()` directories:
+Upload and download will respect the `within()` directories in respect to the remote:
 
 ```ruby
 on hosts do |host|
